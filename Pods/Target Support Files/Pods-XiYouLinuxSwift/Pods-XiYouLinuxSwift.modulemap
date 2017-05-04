@@ -1,0 +1,6 @@
+framework module Pods_XiYouLinuxSwift {
+  umbrella header "Pods-XiYouLinuxSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
