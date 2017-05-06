@@ -9,5 +9,6 @@ target 'XiYouLinuxSwift' do
     pod 'ESPullToRefresh'
     pod 'ObjectMapper'
     pod 'Kingfisher'
+    pod 'SwipeCellKit'
     end
 

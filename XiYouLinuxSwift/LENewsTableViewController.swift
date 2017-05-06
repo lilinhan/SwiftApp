@@ -26,7 +26,19 @@ class LENewsTableViewController: UITableViewController {
         tableView.scrollIndicatorInsets = UIEdgeInsets.init(top: 5, left: 0, bottom: 0, right: 0)
         //设置透明度
         self.navigationController?.navigationBar.isTranslucent = false
+        
+        self.tableView.es_addPullToRefresh {
+            [weak self] in
+            /// 在这里做刷新相关事件
+            /// ...
+            self?.page = 1;
 
+            self?.getDataFromWeb()
+            /// 如果你的刷新事件成功，设置completion自动重置footer的状态
+            self?.tableView.es_stopPullToRefresh(ignoreDate: true)
+            /// 设置ignoreFooter来处理不需要显示footer的情况
+            self?.tableView.es_stopPullToRefresh(ignoreDate: true, ignoreFooter: false)
+        }
         tableView.es_addInfiniteScrolling {
             [weak self] in
             /// 在这里做加载更多相关事件
@@ -42,8 +54,10 @@ class LENewsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        getDataFromWeb()
         self.tabBarController?.tabBar.isHidden = false
     }
+    
     
     func setNavBarButtonIterm()  {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发表", style: .plain, target: self, action: #selector(pressBtn))
@@ -52,8 +66,45 @@ class LENewsTableViewController: UITableViewController {
     
     func pressBtn()  {
         let vc = LEPublishViewController()
+        //type:1  发表新鲜事 type:2 发表评论
+        vc.type = 1
         self.navigationController?.pushViewController(vc, animated: true)
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func pressLikeBtn(btn: UIButton)  {
+        let urlString = "https://api.xiyoulinux.org/news/\(btn.tag)/favors"
+        let url = URL(string: urlString)
+        let accessToken = UserDefaults.standard.value(forKey: "LiAccessToken") as! String
+        
+        let param = ["access_token":accessToken]
+        
+        
+        Alamofire.request(url!, method: .post, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+            if response.result.isSuccess {
+                var num:Int = Int((btn.titleLabel?.text)!)!
+                num += 1
+                let str = "\(num)"
+                btn.setTitle(str, for: .normal)
+                btn.setTitle(str, for: .highlighted)
+            }
+            
+            if response.result.isFailure {
+                print("Network Error")
+            }
+        }
+        
+    }
+    
+    func pressCommentBtn(btn: UIButton)  {
+        let id = btn.tag
+        let vc = LEPublishViewController()
+        //type:1  发表新鲜事 type:2 发表评论
+        vc.type = 2
+        vc.id = id
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+        
     }
 }
 
@@ -63,7 +114,7 @@ extension LENewsTableViewController {
         let accessToken = UserDefaults.standard.value(forKey: "LiAccessToken") as! String
         let url = URL(string: "https://api.xiyoulinux.org/news")
         
-        let params = ["per_page":5, "access_token":accessToken, "page":page] as [String : Any]
+        let params = ["per_page":10, "access_token":accessToken, "page":page] as [String : Any]
         Alamofire.request(url!, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
             if response.result.isSuccess {
                 let data = Mapper<LENewData>().map(JSONString: response.value!)
@@ -123,17 +174,23 @@ extension LENewsTableViewController {
             cell?.iconView?.kf.setImage(with: url)
         }
         cell?.contentLabel?.text = self.data?.data?[indexPath.row].content
-        
         cell?.timeLabel?.text = self.data?.data?[indexPath.row].created_at
+        
         
         if let likeBtnLabelNum = self.data?.data?[indexPath.row].favors?.count {
             let likeBtnLabel = "\(likeBtnLabelNum)"
             cell?.likeBtn?.setTitle(likeBtnLabel, for: .normal)
+            cell?.likeBtn?.setTitle(likeBtnLabel, for: .highlighted)
+            cell?.likeBtn?.tag = Int(exactly: (self.data?.data?[indexPath.row].id)!)!
+            cell?.likeBtn?.addTarget(self, action: #selector(pressLikeBtn(btn:)), for: .touchUpInside)
         }
         
         if let commentBtnLabelNum = self.data?.data?[indexPath.row].comments?.count {
             let commentBtnLabel = "\(commentBtnLabelNum)"
             cell?.commentBtn?.setTitle(commentBtnLabel, for: .normal)
+            cell?.commentBtn?.setTitle(commentBtnLabel, for: .highlighted)
+            cell?.commentBtn?.tag = Int(exactly: (self.data?.data?[indexPath.row].id)!)!
+            cell?.commentBtn?.addTarget(self, action: #selector(pressCommentBtn(btn:)), for: .touchUpInside)
         }
         
         return cell!

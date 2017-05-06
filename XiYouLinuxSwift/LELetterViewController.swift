@@ -2,34 +2,54 @@
 //  LELetterViewController.swift
 //  XiYouLinuxSwift
 //
-//  Created by lewin丶 on 2017/2/12.
+//  Created by lewin丶 on 2017/5/6.
 //  Copyright © 2017年 lewin丶. All rights reserved.
 //
 
 import UIKit
 
-class LELetterViewController: UIViewController {
+class LELetterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "写信", style: .plain, target: self, action: #selector(createSendMessageVC))
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+}
+
+//MARK: 创建写消息的vc
+extension LELetterViewController {
+    func createSendMessageVC()  {
+        let vc = LESendMessageViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+}
+
+
+// MARK: - Table view data source
+extension LELetterViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
-    */
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        // Configure the cell...
+        
+        return cell
+    }
+    
 
 }

@@ -20,17 +20,9 @@ class LENewInfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNewInfoDataFromWeb()
-        
-        //self.tableView.style = .grouped
         tableView.scrollIndicatorInsets = UIEdgeInsets.init(top: 5, left: 0, bottom: 0, right: 0)
-//        let header = LENewDataInfoHeader()
-//        header.frame = CGRect(x: 0, y: 0, width: screenW - 2*margin, height: 300)
         tableView.register(LECommentTableViewCell.self, forCellReuseIdentifier: cellid)
-//        self.tableView.tableHeaderView  = header
-//        self.tableView.reloadData()
-//        tableView?.estimatedRowHeight = 44.0
-//        tableView?.rowHeight = UITableViewAutomaticDimension
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,5 +114,6 @@ extension LENewInfoTableViewController {
             }
         }
     }
+
     
 }

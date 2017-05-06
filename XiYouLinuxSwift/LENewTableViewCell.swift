@@ -16,6 +16,7 @@ class LENewTableViewCell: UITableViewCell {
     var likeBtn:UIButton?
     var commentBtn:UIButton?
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
