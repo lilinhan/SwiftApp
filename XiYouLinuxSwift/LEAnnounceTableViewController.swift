@@ -83,7 +83,6 @@ extension LEAnnounceTableViewController {
         }
         cell?.selectionStyle = .none
         if data.count > 0 {
-            print(data.count)
             cell?.nameLabel.text = data[indexPath.row].author?.name
             
             if let iconString = data[indexPath.row].author?.avatar_url {

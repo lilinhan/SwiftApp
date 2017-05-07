@@ -202,7 +202,6 @@ extension LENewsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("id: \(self.data?.data?[indexPath.row].id)")
         let newInfoPage = LENewInfoTableViewController()
         newInfoPage.id = self.data?.data?[indexPath.row].id
         self.navigationController?.pushViewController(newInfoPage, animated: true)

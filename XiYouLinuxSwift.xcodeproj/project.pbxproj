@@ -29,6 +29,10 @@
 		30C2503B1EB0305E0036700B /* LELoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C2503A1EB0305D0036700B /* LELoginViewController.swift */; };
 		30CBA1671EBDA819000A341B /* LELetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA1661EBDA819000A341B /* LELetterViewController.swift */; };
 		30CBA1691EBE0985000A341B /* LESendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA1681EBE0985000A341B /* LESendMessageViewController.swift */; };
+		30CBA16D1EBE0D64000A341B /* LEMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA16C1EBE0D64000A341B /* LEMessage.swift */; };
+		30CBA16F1EBE12B7000A341B /* LEMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA16E1EBE12B7000A341B /* LEMessageTableViewCell.swift */; };
+		30CBA1711EBED795000A341B /* LEMemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA1701EBED795000A341B /* LEMemTableViewController.swift */; };
+		30CBA1731EBED8B4000A341B /* LEMemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA1721EBED8B4000A341B /* LEMemTableViewCell.swift */; };
 		30CC57441E7ECBB200F614FC /* LEChangeSelfDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CC57431E7ECBB200F614FC /* LEChangeSelfDataViewController.swift */; };
 		30E8B62A1E4EB7DA001EF8B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8B6291E4EB7DA001EF8B4 /* AppDelegate.swift */; };
 		30E8B62F1E4EB7DA001EF8B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30E8B62D1E4EB7DA001EF8B4 /* Main.storyboard */; };
@@ -68,6 +72,10 @@
 		30C2503A1EB0305D0036700B /* LELoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LELoginViewController.swift; sourceTree = "<group>"; };
 		30CBA1661EBDA819000A341B /* LELetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LELetterViewController.swift; sourceTree = "<group>"; };
 		30CBA1681EBE0985000A341B /* LESendMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LESendMessageViewController.swift; sourceTree = "<group>"; };
+		30CBA16C1EBE0D64000A341B /* LEMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEMessage.swift; sourceTree = "<group>"; };
+		30CBA16E1EBE12B7000A341B /* LEMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEMessageTableViewCell.swift; sourceTree = "<group>"; };
+		30CBA1701EBED795000A341B /* LEMemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEMemTableViewController.swift; sourceTree = "<group>"; };
+		30CBA1721EBED8B4000A341B /* LEMemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEMemTableViewCell.swift; sourceTree = "<group>"; };
 		30CC57431E7ECBB200F614FC /* LEChangeSelfDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEChangeSelfDataViewController.swift; sourceTree = "<group>"; };
 		30E8B6261E4EB7DA001EF8B4 /* XiYouLinuxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiYouLinuxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E8B6291E4EB7DA001EF8B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -343,6 +351,7 @@
 		30E8B64F1E50045B001EF8B4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				30CBA16C1EBE0D64000A341B /* LEMessage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -350,6 +359,8 @@
 		30E8B6501E500461001EF8B4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				30CBA16E1EBE12B7000A341B /* LEMessageTableViewCell.swift */,
+				30CBA1721EBED8B4000A341B /* LEMemTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -359,6 +370,7 @@
 			children = (
 				30CBA1661EBDA819000A341B /* LELetterViewController.swift */,
 				30CBA1681EBE0985000A341B /* LESendMessageViewController.swift */,
+				30CBA1701EBED795000A341B /* LEMemTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -585,6 +597,7 @@
 				30015C131E7AD4F800CD783F /* LEMeHeader.swift in Sources */,
 				30C1824D1E6DAACA00862011 /* LEMeViewController.swift in Sources */,
 				306526241EB8408700532FE0 /* LEComment.swift in Sources */,
+				30CBA1731EBED8B4000A341B /* LEMemTableViewCell.swift in Sources */,
 				30CBA1671EBDA819000A341B /* LELetterViewController.swift in Sources */,
 				306526221EB8230900532FE0 /* LEAuthor.swift in Sources */,
 				30CC57441E7ECBB200F614FC /* LEChangeSelfDataViewController.swift in Sources */,
@@ -593,10 +606,13 @@
 				30015C171E7AE98300CD783F /* LEMeFooter.swift in Sources */,
 				3065262A1EB8439E00532FE0 /* LEData.swift in Sources */,
 				30EDDFC11EB0D8CD00886F03 /* LELoginTViewController.swift in Sources */,
+				30CBA16F1EBE12B7000A341B /* LEMessageTableViewCell.swift in Sources */,
 				3070AEBC1EBAF8B300B09DC5 /* LECommentTableViewCell.swift in Sources */,
 				30E8B65E1E5004E6001EF8B4 /* LEAnnounceTableViewController.swift in Sources */,
 				30C2503B1EB0305E0036700B /* LELoginViewController.swift in Sources */,
 				306526281EB842A800532FE0 /* LEFavor.swift in Sources */,
+				30CBA16D1EBE0D64000A341B /* LEMessage.swift in Sources */,
+				30CBA1711EBED795000A341B /* LEMemTableViewController.swift in Sources */,
 				306526261EB8410000532FE0 /* LEApp.swift in Sources */,
 				30E8B6621E50050B001EF8B4 /* LEReportViewController.swift in Sources */,
 				30E8B6471E4EB951001EF8B4 /* MainViewController.swift in Sources */,
