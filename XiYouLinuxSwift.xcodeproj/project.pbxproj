@@ -33,6 +33,7 @@
 		30CBA16F1EBE12B7000A341B /* LEMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA16E1EBE12B7000A341B /* LEMessageTableViewCell.swift */; };
 		30CBA1711EBED795000A341B /* LEMemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA1701EBED795000A341B /* LEMemTableViewController.swift */; };
 		30CBA1731EBED8B4000A341B /* LEMemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA1721EBED8B4000A341B /* LEMemTableViewCell.swift */; };
+		30CBA1751EC008F1000A341B /* LEPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA1741EC008F1000A341B /* LEPeople.swift */; };
 		30CC57441E7ECBB200F614FC /* LEChangeSelfDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CC57431E7ECBB200F614FC /* LEChangeSelfDataViewController.swift */; };
 		30E8B62A1E4EB7DA001EF8B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8B6291E4EB7DA001EF8B4 /* AppDelegate.swift */; };
 		30E8B62F1E4EB7DA001EF8B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30E8B62D1E4EB7DA001EF8B4 /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 		30CBA16E1EBE12B7000A341B /* LEMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEMessageTableViewCell.swift; sourceTree = "<group>"; };
 		30CBA1701EBED795000A341B /* LEMemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEMemTableViewController.swift; sourceTree = "<group>"; };
 		30CBA1721EBED8B4000A341B /* LEMemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEMemTableViewCell.swift; sourceTree = "<group>"; };
+		30CBA1741EC008F1000A341B /* LEPeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEPeople.swift; sourceTree = "<group>"; };
 		30CC57431E7ECBB200F614FC /* LEChangeSelfDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEChangeSelfDataViewController.swift; sourceTree = "<group>"; };
 		30E8B6261E4EB7DA001EF8B4 /* XiYouLinuxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiYouLinuxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E8B6291E4EB7DA001EF8B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				30CBA16C1EBE0D64000A341B /* LEMessage.swift */,
+				30CBA1741EC008F1000A341B /* LEPeople.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				3070AEBC1EBAF8B300B09DC5 /* LECommentTableViewCell.swift in Sources */,
 				30E8B65E1E5004E6001EF8B4 /* LEAnnounceTableViewController.swift in Sources */,
 				30C2503B1EB0305E0036700B /* LELoginViewController.swift in Sources */,
+				30CBA1751EC008F1000A341B /* LEPeople.swift in Sources */,
 				306526281EB842A800532FE0 /* LEFavor.swift in Sources */,
 				30CBA16D1EBE0D64000A341B /* LEMessage.swift in Sources */,
 				30CBA1711EBED795000A341B /* LEMemTableViewController.swift in Sources */,

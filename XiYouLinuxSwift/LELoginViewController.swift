@@ -128,8 +128,6 @@ class LELoginViewController: UIViewController , UIWebViewDelegate{
                     UserDefaults.standard.synchronize()
                     
                     DispatchQueue.main.async {
-//                        let token = UserDefaults.standard.value(forKey: "LiAccessToken") as! String
-//                        print("Token is \(token)")
                         self.dismiss(animated: true, completion: nil)
                     }
                     

@@ -14,6 +14,9 @@ class MainViewController: UITabBarController {
 
     override func viewDidAppear(_ animated: Bool) {
         //如果是第一次登陆
+        //let accessToken = ""
+        //UserDefaults.standard.setValue(accessToken, forKey: "LiAccessToken")
+
         let accessToken = UserDefaults.standard.value(forKey: "LiAccessToken") as! String
         if accessToken == "" || accessToken.characters.count <= 0{
             let loginVC = LELoginViewController()

@@ -14,38 +14,71 @@ import ObjectMapper
 import Kingfisher
 
 class LESendMessageViewController: UIViewController, UITextFieldDelegate {
-    lazy var nameTextFiel:UITextField = {
-       let name = UITextField()
-        name.backgroundColor = UIColor.green
-        name.placeholder = "To :"
-        return name
-    }()
+    var peopleId:Int = 0
+    var peopleName:String = ""
+    
+    var nameTextField = UITextField()
     
     lazy var textView:UITextView = {
        let text = UITextView()
-        //text.backgroundColor = UIColor.purple
-        text.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1)
+        text.backgroundColor = UIColor.purple
+        text.selectedRange = NSMakeRange(0, 0)
+        text.isScrollEnabled = false
+        text.textAlignment = NSTextAlignment.left
+        text.textColor = UIColor.darkGray
         return text
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextFiel.delegate = self
+        
+        nameTextField.backgroundColor = UIColor.white
+        nameTextField.placeholder = "To :"
+        nameTextField.textColor = UIColor.darkGray
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发送", style: .plain, target: self, action: #selector(sendMessageToWeb))
+        
+        automaticallyAdjustsScrollViewInsets = false
+        nameTextField.delegate = self
         setUI()
     }
     
-
+    
 }
+
+//MARK: 网络请求
+extension LESendMessageViewController {
+    func sendMessageToWeb()  {
+        let urlString = "https://api.xiyoulinux.org/messages"
+        let url = URL(string: urlString)
+        
+        let accessToken = UserDefaults.standard.value(forKey: "LiAccessToken") as! String
+        let content = textView.text
+        
+        let params = ["access_token":accessToken, "type":0, "receiver_id":peopleId, "content":content!, "status":1, "title":"Send by XiYouLinuxiOSApp"] as [String : Any]
+        
+        Alamofire.request(url!, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+            if response.result.isSuccess {
+                let json = JSON(response.result.value!)
+                print(json)
+            }
+            
+            if response.result.isFailure {
+                print("网络连接失败")
+            }
+        }
+        
+    }
+}
+
 
 //text field delegate
 extension LESendMessageViewController {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let vc = LEMemTableViewController()
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
-        textField.isEnabled = false
-//        textField.setValue(false, forKey: "isEditing")
-        return true
+        return false
     }
     
 }
@@ -54,9 +87,9 @@ extension LESendMessageViewController {
 extension LESendMessageViewController {
     func setUI()  {
         self.view.addSubview(textView)
-        self.view.addSubview(nameTextFiel)
+        self.view.addSubview(nameTextField)
         
-        nameTextFiel.snp.makeConstraints { (make) in
+        nameTextField.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(64+margin)
             make.left.equalToSuperview().offset(margin)
             make.width.equalTo(screenW - 2 * margin)
@@ -64,10 +97,18 @@ extension LESendMessageViewController {
         }
         
         textView.snp.makeConstraints { (make) in
-            make.top.equalTo(nameTextFiel.snp.bottom).offset(margin)
-            make.left.equalTo(nameTextFiel)
+            make.top.equalTo(nameTextField.snp.bottom).offset(margin)
+            make.left.equalTo(nameTextField)
             make.width.equalTo(screenW - 2 * margin)
             make.height.equalTo(100)
         }
+    }
+}
+
+extension LESendMessageViewController:MyProtocol {
+    func passUserId(id: Int, name: String) {
+        peopleId = id
+        peopleName = name
+        self.nameTextField.text = peopleName
     }
 }
