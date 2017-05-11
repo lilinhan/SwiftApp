@@ -127,6 +127,11 @@ extension LELetterViewController {
                 let url = URL(string: iconString)
                 cell?.iconView.kf.setImage(with: url)
             }
+            
+            if data[indexPath.row].title == "XiYouLinuxiOSApp BUG!!!" {
+                cell?.tagIcon.image = UIImage(named: "bug")
+            }
+            
             cell?.nameLabel.text = data[indexPath.row].author?.name
             cell?.timeLabel.text = data[indexPath.row].created_at
             cell?.contentLabel.text = data[indexPath.row].content

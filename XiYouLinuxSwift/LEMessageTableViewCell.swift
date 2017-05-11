@@ -27,12 +27,18 @@ class LEMessageTableViewCell: UITableViewCell {
         return name
     }()
     
+    lazy var tagIcon:UIImageView = {
+       let icon = UIImageView()
+        icon.image = UIImage(named: "email")
+        return icon
+    }()
+    
     lazy var timeLabel:UILabel = {
        let time = UILabel()
         time.backgroundColor = UIColor.white
         time.font = UIFont.systemFont(ofSize: 14)
         time.textColor = UIColor.gray
-        time.textAlignment = NSTextAlignment.left
+        time.textAlignment = NSTextAlignment.right
         return time
     }()
     
@@ -62,6 +68,7 @@ extension LEMessageTableViewCell {
     func setUI()  {
         addSubview(iconView)
         addSubview(nameLabel)
+        addSubview(tagIcon)
         addSubview(timeLabel)
         addSubview(contentLabel)
         
@@ -74,13 +81,20 @@ extension LEMessageTableViewCell {
         nameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(iconView.snp.right).offset(margin)
             make.top.equalTo(iconView).offset(margin/2)
-            make.width.equalTo(150)
+            make.width.equalTo(48)
             make.height.equalTo(20)
         }
         
+        tagIcon.snp.makeConstraints { (make) in
+            make.left.equalTo(nameLabel.snp.right).offset(margin/2)
+            make.top.equalTo(iconView).offset(2)
+            make.width.height.equalTo(15)
+        }
+        
         timeLabel.snp.makeConstraints { (make) in
-            make.top.width.height.equalTo(nameLabel)
-            make.left.equalTo(nameLabel.snp.right).offset(margin)
+            make.top.height.equalTo(nameLabel)
+            make.width.equalTo(240)
+            make.left.equalTo(tagIcon.snp.right).offset(margin)
         }
         
         contentLabel.snp.makeConstraints { (make) in

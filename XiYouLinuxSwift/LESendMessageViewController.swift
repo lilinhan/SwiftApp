@@ -21,7 +21,7 @@ class LESendMessageViewController: UIViewController, UITextFieldDelegate {
     
     lazy var textView:UITextView = {
        let text = UITextView()
-        text.backgroundColor = UIColor.purple
+        text.backgroundColor = UIColor.white
         text.selectedRange = NSMakeRange(0, 0)
         text.isScrollEnabled = false
         text.textAlignment = NSTextAlignment.left
