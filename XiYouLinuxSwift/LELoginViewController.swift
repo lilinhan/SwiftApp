@@ -84,7 +84,6 @@ class LELoginViewController: UIViewController , UIWebViewDelegate{
                 var code = urlPath[1].components(separatedBy: "=")[1]
                 let start = code.index(code.startIndex, offsetBy: 40)
                 code = code.substring(to: start)
-//                print("code:\(code)")
                 
                 requestForAccessToken(authorizationCode: code)
             }

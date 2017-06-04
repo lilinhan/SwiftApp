@@ -99,7 +99,7 @@ class LENewTableViewCell: UITableViewCell {
             make.top.equalTo(iconView.snp.bottom)
             make.left.equalTo(iconView)
             make.width.equalTo(screenW-margin)
-            make.height.equalTo(110)
+            make.height.equalTo(30)
         }
         timeLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentLabel.snp.bottom).offset(halfMargin)

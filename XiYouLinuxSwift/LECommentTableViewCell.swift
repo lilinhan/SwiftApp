@@ -30,7 +30,7 @@ class LECommentTableViewCell: UITableViewCell {
         comment.font = UIFont.systemFont(ofSize: 14)
         comment.backgroundColor = UIColor.white
         comment.textColor = UIColor.darkGray
-        comment.numberOfLines = 2
+        comment.numberOfLines = 0
         return comment
     }()
     
@@ -92,8 +92,8 @@ extension LECommentTableViewCell {
         commentLabel.snp.makeConstraints { (make) in
             make.top.equalTo(icon.snp.bottom).offset(2)
             make.left.equalTo(timeLabel)
-            make.width.equalTo(screenW-2*margin)
-            make.height.equalTo(30)
+            make.width.equalTo(screenW-50-margin)
+            make.height.equalTo(40)
         }
         
     }

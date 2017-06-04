@@ -83,7 +83,7 @@ class LENewDataInfoHeader: UIView {
             make.top.equalTo(icon.snp.bottom).offset(margin)
             make.left.equalToSuperview().offset(margin)
             make.width.equalTo(screenW - 2 * margin)
-            make.height.equalTo(200)
+            make.height.equalTo(100)
         }
 
     }

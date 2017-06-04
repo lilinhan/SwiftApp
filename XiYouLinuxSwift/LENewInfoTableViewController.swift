@@ -49,7 +49,7 @@ extension LENewInfoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 80
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,7 +94,7 @@ extension LENewInfoTableViewController {
                 let data = Mapper<LEData>().map(JSONString: response.value!)
                 self.data = data
                 let header = LENewDataInfoHeader()
-                header.frame = CGRect(x: 0, y: 0, width: screenW - 2*margin, height: 300)
+                header.frame = CGRect(x: 0, y: 0, width: screenW - 2*margin, height: 200)
                 if let iconString = self.data?.author?.avatar_url {
                     let url = URL(string: iconString)
                     header.icon.kf.setImage(with: url)
